@@ -160,3 +160,35 @@ If you use our environment or data, please cite our paper:
   year={2023}
 }
 ```
+
+## SambaNova Integration
+
+WebArena now supports integration with SambaNova's LLM API. To use this feature:
+
+1. Set your SambaNova API key as an environment variable:
+```bash
+export SAMBANOVA_API_KEY="your-api-key-here"
+```
+
+2. Use the SambaNova client in your code:
+```python
+from llms.sambanova import SambaNovaClient
+
+# Initialize the client
+client = SambaNovaClient()
+
+# Simple usage
+response = client("Your prompt here")
+
+# Advanced usage with custom parameters
+response = client.generate(
+    messages=[
+        {"role": "system", "content": "Your system message"},
+        {"role": "user", "content": "Your prompt"}
+    ],
+    temperature=0.2,
+    top_p=0.2
+)
+```
+
+For more examples, see `scripts/sambanova_example.py`.
